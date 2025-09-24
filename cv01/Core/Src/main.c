@@ -90,7 +90,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  uint8_t array[32] = {1,0,1,0,1,0,0,1,1,1,0,1,1,1,0,1,1,1,0,0,1,0,1,0,1,0,0,0,0,0,0,0};
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -100,6 +100,15 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  LL_GPIO_SetOutputPin(LD2_GPIO_Port, LD2_Pin);
+	  LL_mDelay(200);
+	  LL_GPIO_ResetOutputPin(LD2_GPIO_Port, LD2_Pin);
+	  LL_mDelay(200);
+
+	  for(i=0;i<32;i++)
+	  {
+
+	  }
   }
   /* USER CODE END 3 */
 }
