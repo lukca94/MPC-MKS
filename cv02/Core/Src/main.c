@@ -76,12 +76,22 @@ void button(void){
 		}
 
 	static uint32_t old_s1;
+	static uint32_t old_s2;
 	uint32_t new_s1 = LL_GPIO_IsInputPinSet(S1_GPIO_Port, S1_Pin);
+	uint32_t new_s2 = LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin);
+
 
 	if (old_s1 && !new_s1) { // falling edge
 		off_time = Tick + LED_TIME_LONG;
 		LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
 	}
+
+	if (old_s2 && !new_s2) { // falling edge
+		off_time = Tick + LED_TIME_SHORT;
+		LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
+	}
+
+	old_s2 = new_s2;
 	old_s1 = new_s1;
 
 }
