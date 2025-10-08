@@ -94,6 +94,7 @@ int main(void)
   MX_USART2_UART_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
+  sct_init();
   HAL_TIM_Encoder_Start(&htim1, htim1.Channel);
   /* USER CODE END 2 */
 
